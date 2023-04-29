@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { CRS } from "leaflet";
+import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
 
-function App() {
-  const [count, setCount] = useState(0)
+
+const App = () => {
+  const { Overlay } = LayersControl
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
 
+    <div className="w-[100vh] h-[100vh]"
+    >
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossOrigin="" />
+      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossOrigin="" />
+
+      <div className="w-full h-full m-auto " >
+        <MapContainer className='h-[100%] cursor-crosshair' crs={CRS.EPSG3857} center={ [70.3, -49.5]} zoom={6} maxZoom={10} minZoom={2} scrollWheelZoom={true}  >
+          <LayersControl >
+            <TileLayer
+              className='cursor-crosshair'
+              attribution='Imagery provided by ESRI'
+              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg"
+              maxNativeZoom={11}
+              tileSize={256}
+            />
+            <Overlay checked name='Velocity Map'>
+              <TileLayer
+                className='cursor-crosshair'
+                url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
+                maxNativeZoom={11}
+                tileSize={256}
+              />
+            </Overlay>
+          </LayersControl>
+        </MapContainer>
+      </div>
+    </div>
+  )
+};
 export default App
