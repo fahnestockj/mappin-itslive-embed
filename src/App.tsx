@@ -1,41 +1,66 @@
-import { CRS } from "leaflet";
-import { MapContainer, TileLayer, LayersControl } from 'react-leaflet'
+import ChartPlotly from "./components/ChartPlotly/ChartPlotly";
+import EmbedMap from "./components/EmbedMap";
+import LocationMarker from "./components/LocationMarker/LocationMarker";
+import { IMarker } from "./components/Velmap";
 
 
 const App = () => {
-  const { Overlay } = LayersControl
+  // 60.10521, -140.44922 b
+  // 60.02227, -140.54398 g
+  // 59.91642, -140.64697 r
+  // 59.83301, -140.78156 y
+  const markers: Array<IMarker> = [
+    {
+      id: 'b',
+      color: 'blue',
+      latLng: {
+        lat: 60.10521,
+        lng: -140.44922
+      }
+    },
+    {
+      id: 'g',
+      color: 'green',
+      latLng: {
+        lat: 60.02227,
+        lng: -140.54398
+      }
+    },
+    {
+      id: 'r',
+      color: 'red',
+      latLng: {
+        lat: 59.91642,
+        lng: -140.64697
+      }
+    },
+    {
+      id: 'y',
+      color: 'yellow',
+      latLng: {
+        lat: 59.83301,
+        lng: -140.78156
+      }
+    }
+  ]
 
+  
   return (
-
-    <div className="w-[100vh] h-[100vh]"
-    >
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossOrigin="" />
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossOrigin="" />
-
-      <div className="w-full h-full m-auto " >
-        <MapContainer className='h-[100%] cursor-crosshair' crs={CRS.EPSG3857} center={ [70.3, -49.5]} zoom={6} maxZoom={10} minZoom={2} scrollWheelZoom={true}  >
-          <LayersControl >
-            <TileLayer
-              className='cursor-crosshair'
-              attribution='Imagery provided by ESRI'
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg"
-              maxNativeZoom={11}
-              tileSize={256}
-            />
-            <Overlay checked name='Velocity Map'>
-              <TileLayer
-                className='cursor-crosshair'
-                url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
-                maxNativeZoom={11}
-                tileSize={256}
-              />
-            </Overlay>
-          </LayersControl>
-        </MapContainer>
+    <div className="w-[1000px] h-[1000px]">
+      <div className="w-full h-1/2">
+        <EmbedMap 
+          zoom={9}
+          mapChildren={
+            <>
+              {markers.map(marker => (
+                <LocationMarker key={`${marker.id}`} markerProp={marker} markers={markers} draggable={false} />
+              ))}
+            </>
+          }
+          />
+      </div>
+      <div className="w-full h-1/2">
+      <ChartPlotly />
       </div>
     </div>
   )
