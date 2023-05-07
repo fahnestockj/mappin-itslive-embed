@@ -6,7 +6,7 @@ const Plot = createPlotlyComponent(Plotly)
 
 type IProps = {
 
-} 
+}
 const ChartPlotly = (props: IProps) => {
   return (
     <div className='w-full h-full'>
@@ -34,7 +34,7 @@ const ChartPlotly = (props: IProps) => {
             type: 'scatter',
             mode: 'markers',
             marker: { color: 'red' },
-            name: 'Lat: 59.92, Lon: -140.65'
+            name: 'Lat: 59.92, Lon: -140.65',
           },
           {
             x: yellowX,
@@ -45,8 +45,10 @@ const ChartPlotly = (props: IProps) => {
             name: 'Lat: 59.83, Lon: -140.78'
           },
         ]}
-        layout={{autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date'}, yaxis: { type:'-', title: 'speed (m/yr)'}}}
-        className='w-full h-full'
+        layout={{ autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' } }}
+        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, doubleClickDelay:1000}}
+        
+      className='w-full h-full'
         />
 
     </div>
