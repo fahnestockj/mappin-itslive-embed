@@ -2,7 +2,7 @@ import { UseFormReturn } from "react-hook-form";
 import { AiOutlineLineChart } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { LatLngForm } from "./LatLngForm";
+import { LatLonForm } from "./LatLonForm";
 import { IMarker } from "./Velmap";
 import { MarkerTable } from "./MarkerTable";
 import { createMarker } from "../utils/createMarker";
@@ -30,7 +30,7 @@ export const BottomBar = (props: IProps) => {
     <>
       {(lg || md ) &&
         <div className='basis-2/3 inline-flex ml-5 h-14'>
-          <LatLngForm form={form} onSubmit={({ latitude, longitude }) => {
+          <LatLonForm form={form} onSubmit={({ latitude, longitude }) => {
             createMarker({
               latitude,
               longitude,

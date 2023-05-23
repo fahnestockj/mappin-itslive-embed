@@ -17,7 +17,7 @@ type IProps = {
 const LocationMarker = (props: IProps) => {
   const { draggable, markerProp, markers, setMarkers, setSearchParams } = props
   const markerRef = useRef(null)
-  const [position, setPosition] = useState(markerProp.latLng)
+  const [position, setPosition] = useState({ lat: markerProp.latLon.lat, lng: markerProp.latLon.lon })
 
   const icon = L.divIcon({
     html: renderToStaticMarkup(SvgCross(markerProp.color)),
@@ -45,12 +45,12 @@ const LocationMarker = (props: IProps) => {
       if (marker != null) {
         const newMarkers = [...markers]
         // @ts-ignore
-        const { lat, lng } = marker.getLatLng() as { lat: number, lng: number } //a leaflet function for fetching latLng
+        const { lat, lng } = marker.getLatLng() as { lat: number, lng: number } //a leaflet function for fetching latLon
         newMarkers[oldMarkerIndex] = {
           ...markerProp,
-          latLng: {
+          latLon: {
             lat: parseFloat(lat.toFixed(5)),
-            lng: parseFloat(lng.toFixed(5))
+            lon: parseFloat(lng.toFixed(5))
           }
         }
         setMarkers(newMarkers)

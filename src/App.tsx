@@ -13,33 +13,33 @@ const App = () => {
     {
       id: 'b',
       color: 'blue',
-      latLng: {
+      latLon: {
         lat: 60.10521,
-        lng: -140.44922
+        lon: -140.44922
       }
     },
     {
       id: 'g',
       color: 'green',
-      latLng: {
+      latLon: {
         lat: 60.02227,
-        lng: -140.54398
+        lon: -140.54398
       }
     },
     {
       id: 'r',
       color: 'red',
-      latLng: {
+      latLon: {
         lat: 59.91642,
-        lng: -140.64697
+        lon: -140.64697
       }
     },
     {
       id: 'y',
       color: 'yellow',
-      latLng: {
+      latLon: {
         lat: 59.83301,
-        lng: -140.78156
+        lon: -140.78156
       }
     }
   ]
@@ -53,7 +53,7 @@ const App = () => {
           mapChildren={
             <>
               {markers.map(marker => (
-                <LocationMarker key={`${marker.id}`} markerProp={marker} markers={markers} draggable={false} />
+                <LocationMarker key={`${marker.id}`} markerProp={marker} markers={markers} draggable={true} />
               ))}
             </>
           }
