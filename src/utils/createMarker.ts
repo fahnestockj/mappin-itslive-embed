@@ -9,12 +9,10 @@ type IProps = {
   longitude: number
   markers: IMarker[]
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
-  setSearchParams: (params: URLSearchParams) => void
 
 }
 export function createMarker(props: IProps) {
-  const { latitude, longitude, markers, setSearchParams, setMarkers } = props
-  // console.log('lat', latitude, 'lon', longitude);
+  const { latitude, longitude, markers, setMarkers } = props
 
   if (markers.length < 4) {
     const color = getColor(markers.length)
@@ -31,9 +29,6 @@ export function createMarker(props: IProps) {
         }
       })
     })
-
-    const urlParams = markersToUrlParams(updatedMarkers)
-    setSearchParams(urlParams)
     setMarkers(updatedMarkers)
   }
 }

@@ -46,10 +46,10 @@ const ChartPlotly = (props: IProps) => {
           },
         ]}
         layout={{ autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' } }}
-        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, doubleClickDelay:1000}}
-        
-      className='w-full h-full'
-        />
+        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, doubleClickDelay: 1000 }}
+
+        className='w-full h-full'
+      />
 
     </div>
   )

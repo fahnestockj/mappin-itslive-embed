@@ -5,10 +5,9 @@ import { IMarker } from "./Velmap";
 type IProps = {
   markers: Array<IMarker>
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
-  setSearchParams: (params: URLSearchParams) => void
 }
 const LatLonMapEventController = (props: IProps) => {
-  const { markers, setMarkers, setSearchParams } = props
+  const { markers, setMarkers } = props
   useMapEvents({
     click(e) {
       createMarker({
@@ -16,7 +15,6 @@ const LatLonMapEventController = (props: IProps) => {
         longitude: e.latlng.lng,
         markers,
         setMarkers,
-        setSearchParams,
       })
 
     }

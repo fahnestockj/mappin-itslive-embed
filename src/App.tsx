@@ -1,15 +1,16 @@
+import { useState } from "react";
 import ChartPlotly from "./components/ChartPlotly/ChartPlotly";
 import EmbedMap from "./components/EmbedMap";
 import LocationMarker from "./components/LocationMarker/LocationMarker";
 import { IMarker } from "./components/Velmap";
+import RefreshPlotButton from "./components/RefreshPlotButton";
+import ClearMarkersButton from "./components/ClearMarkersButton";
+import LatLonMapEventController from "./components/LatLonMapEventController";
 
 
 const App = () => {
-  // 60.10521, -140.44922 b
-  // 60.02227, -140.54398 g
-  // 59.91642, -140.64697 r
-  // 59.83301, -140.78156 y
-  const markers: Array<IMarker> = [
+
+  const markersInit: Array<IMarker> = [
     {
       id: 'b',
       color: 'blue',
@@ -44,23 +45,29 @@ const App = () => {
     }
   ]
 
-  
+  const [markers, setMarkers] = useState<Array<IMarker>>(markersInit)
+
   return (
-    <div className="w-[1000px] h-[1000px]">
+    <div className="w-[1000px] h-[1000px] bg-slate-800">
+      <div className="flex flex-row justify-start items-center">
+        <RefreshPlotButton />
+        <ClearMarkersButton setMarkers={setMarkers} />
+      </div>
       <div className="w-full h-1/2">
-        <EmbedMap 
+        <EmbedMap
           zoom={9}
           mapChildren={
             <>
               {markers.map(marker => (
-                <LocationMarker key={`${marker.id}`} markerProp={marker} markers={markers} draggable={true} />
+                <LocationMarker key={`${marker.id}`} markerProp={marker} markers={markers} setMarkers={setMarkers} />
               ))}
+              <LatLonMapEventController markers={markers} setMarkers={setMarkers} />
             </>
           }
-          />
+        />
       </div>
       <div className="w-full h-1/2">
-      <ChartPlotly />
+        <ChartPlotly />
       </div>
     </div>
   )

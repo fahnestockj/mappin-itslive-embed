@@ -1,8 +1,8 @@
 import { HTTPStore, openArray } from "zarr";
 import { IMarker } from "../components/Velmap";
-import { ITimeseries } from "../pages/ChartPage";
 import { findClosestIndex } from "./findClosestIndex";
 import { geoJsonLookup } from "./geoJsonLookup";
+import { ITimeseries } from "../types";
 
 declare enum HTTPMethod {
   GET = "GET",
@@ -77,16 +77,20 @@ export async function findManyTimeseries(markerArr: Array<IMarker>): Promise<Arr
       return res.data as Float64Array
     })
 
-    const timeseriesData: Array<[Date, number]> = []
+    const velocityArray: Array<number> = []
+    const midDateArray: Array<Date> = []
     for (let i = 0; i < timeseriesArr.length; i++) {
       if (timeseriesArr[i] === -32767) continue
-      timeseriesData.push([new Date(midDateArr[i] * 86400000), timeseriesArr[i]])
-    }
-    
+      velocityArray.push(timeseriesArr[i])
+      midDateArray.push(new Date(midDateArr[i] * 86400000))
+    } 
 
     results.push({
       marker,
-      data: timeseriesData,
+      data: {
+        midDateArray,
+        velocityArray
+      }
     })
   }
   return results

@@ -1,5 +1,6 @@
 import { CRS } from "leaflet";
 import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
+import LatLonMapEventController from "./LatLonMapEventController";
 
 interface IProps {
   mapChildren?: React.ReactNode
@@ -28,12 +29,13 @@ const EmbedMap = (props: IProps) => {
               maxNativeZoom={11}
               tileSize={256}
             />
-            <LayersControl.Overlay checked name='Velocity Map'> <TileLayer
-              className='cursor-crosshair'
-              url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
-              maxNativeZoom={11}
-              tileSize={256}
-            />
+            <LayersControl.Overlay checked name='Velocity Map'>
+              <TileLayer
+                className='cursor-crosshair'
+                url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
+                maxNativeZoom={11}
+                tileSize={256}
+              />
             </LayersControl.Overlay>
           </LayersControl>
           {props.mapChildren}
