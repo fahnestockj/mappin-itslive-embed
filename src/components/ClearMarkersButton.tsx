@@ -17,7 +17,7 @@ const ClearMarkersButton = (props: IProps) => {
         }}
       >
         <BiTrash className='scale-150 mr-2 mb-[2px]' />
-        Clear Points
+        Clear Markers
       </button>
     </div>
   )

@@ -1,4 +1,3 @@
-import React from "react"
 import { AiOutlineLineChart } from "react-icons/ai";
 
 type IProps = {
@@ -8,7 +7,7 @@ const RefreshPlotButton = (props: IProps) => {
   const { disabled } = props
   return (
 
-    <div className="p-3">
+    <div className="py-10 px-3 ">
       <div className="group relative w-max">
         <button
           type="button"
