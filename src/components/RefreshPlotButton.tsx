@@ -1,21 +1,41 @@
 import { AiOutlineLineChart } from "react-icons/ai";
 import ProgressBarWithTimer from "./ProgressBarWithTimer";
 import { IMarker } from "../types";
+import axios from "axios";
+import { findManyTimeseries } from "../utils/findManyTimeseries";
+import { markersInit } from "./ChartPlotly/mockMarkers";
 
 type IProps = {
-  disabled?: boolean
   fetchInProgress: boolean
   setFetchInProgress: React.Dispatch<React.SetStateAction<boolean>>
+  setProgress: React.Dispatch<React.SetStateAction<number>>
   markers: Array<IMarker>
+  setTimeseriesArr: React.Dispatch<React.SetStateAction<any>>
 }
 const RefreshPlotButton = (props: IProps) => {
-  const { disabled } = props
+  const { setFetchInProgress, fetchInProgress, markers, setProgress, setTimeseriesArr } = props
+
+  const onClick = async () => {
+    setFetchInProgress(true)
+    const res = await findManyTimeseries(markers).catch(err => {
+      console.log(err)
+      setProgress(0)
+    })
+    
+    console.log(res);
+    setTimeseriesArr(res || [])
+    setFetchInProgress(false)
+    setProgress(100)
+
+  }
+  const disabled = markers === markersInit || fetchInProgress
 
   return (
     <>
-      <div className="py-10 px-3 ">
+      <div className="py-5 px-3 ">
         <div className="group relative w-max">
           <button
+            onClick={onClick}
             type="button"
             className=" inline-flex items-center rounded-md border border-transparent  px-6 py-3 text-base font-medium text-white shadow-sm  
             focus:outline-none focus:ring-2 focus:ring-[#179abb] 
@@ -28,10 +48,10 @@ const RefreshPlotButton = (props: IProps) => {
             disabled={disabled}
           >
             <AiOutlineLineChart className='scale-150 mr-2 mb-[2px]' />
-            Fetch Data
+            Plot
           </button>
-          {disabled && <span
-            className="pointer-events-none absolute -top-7 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 shadow-lg text-white"
+          {markers === markersInit && <span
+            className="pointer-events-none absolute -top-5 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 shadow-lg text-white"
           >
             Try moving a marker!
           </span>

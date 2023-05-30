@@ -20,7 +20,16 @@ const EmbedMap = (props: IProps) => {
         crossOrigin="" />
 
       <div className="w-full h-full m-auto " >
-        <MapContainer className='h-[100%] cursor-crosshair' crs={CRS.EPSG3857} center={center || [59.99426, -140.58929]} zoom={zoom || 6} maxZoom={10} minZoom={2} scrollWheelZoom={true}  >
+        <MapContainer
+          className='h-[100%] cursor-crosshair'
+          crs={CRS.EPSG3857}
+          center={center || [59.99426, -140.58929]}
+          zoom={zoom || 6}
+          maxZoom={10}
+          minZoom={2}
+          scrollWheelZoom={true}
+          worldCopyJump={true}
+        >
           <LayersControl >
             <TileLayer
               className='cursor-crosshair'

@@ -13,7 +13,11 @@ export async function findManyTimeseries(markerArr: Array<IMarker>): Promise<Arr
   const geoJsonLookupRes = geoJsonLookup(markerArr)
   for (const { marker, zarrUrl, cartesianCoordinate } of geoJsonLookupRes) {
     
-    const url = zarrUrl.replace('http', 'https')
+    const httpsUrl = zarrUrl.replace('http', 'https')
+    //NOTE: to get around CORS locally
+    //TODO: remove this when deploying
+    const url = 'http://localhost:5000/' + httpsUrl
+    console.log(url);
     
     const store = new HTTPStore(url, { fetchOptions: {}, supportedMethods: ["GET" as HTTPMethod] });
 
