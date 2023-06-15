@@ -32,7 +32,7 @@ const RefreshPlotButton = (props: IProps) => {
 
   return (
     <>
-      <div className="py-5 px-3 ">
+      <div className="py-5 pl-3 ">
         <div className="group relative w-max">
           <button
             onClick={onClick}
@@ -40,10 +40,10 @@ const RefreshPlotButton = (props: IProps) => {
             className=" inline-flex items-center rounded-md border border-transparent  px-6 py-3 text-base font-medium text-white shadow-sm  
             focus:outline-none focus:ring-2 focus:ring-[#179abb] 
           focus:ring-offset-2 
-          bg-[#0081A1] 
-          hover:bg-[#046881]
+          bg-mappin-blue
+          hover:bg-mappin-blue
           disabled:opacity-50 
-          disabled:hover:bg-[#0081A1]
+          disabled:hover:mappin-blue
           "
             disabled={disabled}
           >

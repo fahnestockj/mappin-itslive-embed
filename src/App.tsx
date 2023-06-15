@@ -9,6 +9,7 @@ import { markersInit } from "./components/ChartPlotly/mockMarkers";
 import { IMarker, ITimeseries } from "./types";
 import { malaspinaTimeseriesArr } from "./components/ChartPlotly/mockTimeseries";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
+import { ListboxTime } from "./components/ListboxTime";
 
 const App = () => {
 
@@ -17,6 +18,7 @@ const App = () => {
   const [progress, setProgress] = useState<number>(0)
   const [fetchInProgress, setFetchInProgress] = useState<boolean>(false)
   return (
+
     <div className="w-[1000px] h-[1000px] bg-[#222222]">
       <div className="w-full h-1/2">
         <EmbedMap
@@ -33,19 +35,22 @@ const App = () => {
       </div>
       <div className="flex flex-row justify-start items-center">
         <ProgressBarWithTimer numOfMarkers={markers.length} disabled={!fetchInProgress} setProgress={setProgress} progress={progress} />
-        <RefreshPlotButton 
-          fetchInProgress={fetchInProgress} 
-          setFetchInProgress={setFetchInProgress} 
+        <RefreshPlotButton
+          fetchInProgress={fetchInProgress}
+          setFetchInProgress={setFetchInProgress}
           markers={markers}
           setProgress={setProgress}
           setTimeseriesArr={setTimeseriesArr}
-          />
+        />
 
         <ClearMarkersButton setMarkers={setMarkers} />
+
+        <ListboxTime />
       </div>
       <div className="w-full h-1/2">
         <ChartPlotly timeseriesArr={timeseriesArr} />
       </div>
+
     </div>
   )
 };

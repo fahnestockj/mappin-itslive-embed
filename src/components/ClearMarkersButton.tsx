@@ -7,7 +7,7 @@ type IProps = {
 const ClearMarkersButton = (props: IProps) => {
   const { setMarkers } = props
   return (
-    <div>
+    <div className="pl-3 py-5">
 
       <button
         type="button"
