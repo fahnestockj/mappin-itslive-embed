@@ -13,16 +13,15 @@ import { ListboxTime } from "./components/ListboxTime";
 
 const App = () => {
 
+  const [map, setMap] = useState<any>(null)
   const [markers, setMarkers] = useState<Array<IMarker>>(markersInit)
   const [timeseriesArr, setTimeseriesArr] = useState<Array<ITimeseries>>(malaspinaTimeseriesArr)
   const [progress, setProgress] = useState<number>(0)
   const [fetchInProgress, setFetchInProgress] = useState<boolean>(false)
   return (
-
     <div className="w-[1000px] h-[1000px] bg-[#222222]">
       <div className="w-full h-1/2">
         <EmbedMap
-          zoom={9}
           mapChildren={
             <>
               {markers.map(marker => (
@@ -31,6 +30,7 @@ const App = () => {
               <LatLonMapEventController markers={markers} setMarkers={setMarkers} />
             </>
           }
+          setMap={setMap}
         />
       </div>
       <div className="flex flex-row justify-start items-center">
@@ -45,7 +45,7 @@ const App = () => {
 
         <ClearMarkersButton setMarkers={setMarkers} />
 
-        <ListboxTime />
+        <ListboxTime setMarkers={setMarkers} mapRef={map} markers={markers} />
       </div>
       <div className="w-full h-1/2">
         <ChartPlotly timeseriesArr={timeseriesArr} />

@@ -1,3 +1,5 @@
+import { markersInit } from "./components/ChartPlotly/mockMarkers"
+
 export type IColor = 'green' | 'blue' | 'red' | 'yellow'
 
 export type ICoordinate = {
@@ -18,49 +20,60 @@ export type ITimeseries = {
   }
 }
 
-type IGlacier = {
+export type IGlacier = {
   name: string
-  coordinates: Array<ICoordinate>
+  markers: Array<IMarker>
   zoomLevel: number
+  center: ICoordinate
 }
-type IRegion = string
+export type IRegion = string
 
 export const glaciersDict: Record<IRegion, Array<IGlacier>> = {
   'Alaska': [
     {
       name: 'Malaspina Glacier',
-      coordinates: [
-        { lat: 60.176, lon: -147.722 },
-      ],
-      zoomLevel: 10
+      markers: markersInit,
+      zoomLevel: 9,
+      center: { lat: 59.99426, lon: -140.58929 }
     },
     {
       name: 'Columbia Glacier',
-      coordinates: [
-        { lat: 60.176, lon: -147.722 },
-        { lat: 60.176, lon: -147.722 },
-        { lat: 60.176, lon: -147.722 },
+      markers: [
+        {
+          id: 'Columbia Glacier',
+          color: 'blue',
+          latLon: { lat: 60.176, lon: -147.722 },
+        }
       ],
-      zoomLevel: 10
+      zoomLevel: 10,
+      center: { lat: 60.176, lon: -147.722 }
 
     },
     {
       name: 'Mendenhall Glacier',
-      coordinates: [
-        { lat: 58.435, lon: -134.554 },
-        { lat: 58.435, lon: -134.554 },
-        { lat: 58.435, lon: -134.554 },
+      markers: [
+        {
+          id: 'Mendenhall Glacier',
+          color: 'blue',
+          latLon: { lat: 58.435, lon: -134.554 },
+        }
       ],
-      zoomLevel: 10
+      zoomLevel: 10,
+      center: { lat: 58.435, lon: -134.554 }
     }
   ],
   'Washington': [
     {
       name: 'South Cascade Glacier',
-      coordinates: [
-        { lat: 48.5, lon: -121.0 },
+      markers: [
+        {
+          id: 'South Cascade Glacier',
+          color: 'blue',
+          latLon: { lat: 48.5, lon: -121.0 },
+        }
       ],
-      zoomLevel: 10
+      zoomLevel: 10,
+      center: { lat: 48.5, lon: -121.0 }
     },
   ],
 

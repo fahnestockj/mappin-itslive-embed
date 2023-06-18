@@ -1,18 +1,31 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
-import { glaciersDict } from '../types';
+import { IGlacier, IMarker, glaciersDict } from '../types';
 
-export function ListboxTime() {
-  const [selected, setSelected] = useState(glaciersDict['Alaska'][0])
+type IProps = {
+  setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
+  markers: Array<IMarker>
+  mapRef: any
+}
+export function ListboxTime(props: IProps) {
+  const { setMarkers, markers, mapRef } = props
+  const [selected, setSelected] = useState<IGlacier | null>(glaciersDict['Alaska'][0])
+  
+  useEffect(() => {
+    if (selected && (markers !== selected.markers)) {
+      setSelected(null)
+    }
+  }, [markers, selected])
 
   return (
-    <div className="z-50 w-72 pl-3"> 
-      <Listbox value={selected} onChange={setSelected}>
+    <div className="z-50 w-72 pl-3">
+      <Listbox value={selected} onChange={setSelected} >
         <div className="relative ">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-3 pr-10 text-left shadow-md sm:text-sm">
-            <span className="block truncate">{selected.name}</span>
+            {selected && <span className="block truncate">{selected.name}</span>}
+            {!selected && <span className="block truncate">Select a glacier</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <BsChevronExpand
                 className="h-5 w-5 text-gray-400"
@@ -29,20 +42,22 @@ export function ListboxTime() {
             <Listbox.Options className="pl-0 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  sm:text-sm">
               {
                 Object.keys(glaciersDict).map((region) => {
-
                   return (
-                    <>
+                    <div key={region}>
                       <Listbox.Option
                         className='list-none relative cursor-default select-none py-2 pl-10 pr-4 text-black font-bold text-md bg-slate-200'
                         disabled={true}
-                        key={region}
                         value={region}
                       >
                         {region}
                       </Listbox.Option>
                       {glaciersDict[region].map((glacier) => (
                         <Listbox.Option
+                          onClick={() => {
+                            setMarkers(glacier.markers)
 
+                            mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
+                          }}
                           key={glacier.name}
                           className={({ active }) =>
                             `list-none relative cursor-default select-none py-2 pl-14 pr-4 ${active ? 'bg-sky-100 text-sky-900' : 'text-gray-900'
@@ -68,7 +83,7 @@ export function ListboxTime() {
                           )}
                         </Listbox.Option>
                       ))}
-                    </>
+                    </div>
                   )
                 })
               }

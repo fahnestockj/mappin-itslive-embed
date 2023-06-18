@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { Marker, Popup } from 'react-leaflet'
 import { renderToStaticMarkup } from 'react-dom/server'
 import L from 'leaflet'
@@ -15,6 +15,17 @@ const LocationMarker = (props: IProps) => {
   const { markerProp, markers, setMarkers } = props
   const markerRef = useRef(null)
   const [position, setPosition] = useState({ lat: markerProp.latLon.lat, lng: markerProp.latLon.lon })
+
+
+  useEffect(() => {
+    //useEffect check if markerProp.latLon is different from marker.latLon
+    //if so, update marker.latLon
+    //if not, do nothing
+    //we need this because the markerProp.latLon is updated by the LatLonMapEventController but this component is not rerendered
+    if (markerProp.latLon.lat !== position.lat || markerProp.latLon.lon !== position.lng) {
+      setPosition({ lat: markerProp.latLon.lat, lng: markerProp.latLon.lon })
+    }
+  })
 
   const icon = L.divIcon({
     html: renderToStaticMarkup(SvgCross(markerProp.color)),

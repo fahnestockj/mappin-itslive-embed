@@ -5,6 +5,7 @@ import iconRetina from 'leaflet/dist/images/marker-icon-2x.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { useMemo } from "react";
 
 //@ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
@@ -17,46 +18,58 @@ L.Icon.Default.mergeOptions({
 
 interface IProps {
   mapChildren?: React.ReactNode
-  center?: [number, number]
-  zoom?: number,
+  setMap: React.Dispatch<React.SetStateAction<any>>
 }
 
 const EmbedMap = (props: IProps) => {
-  const { center, zoom } = props
-  return (
-    <div className="w-full h-full">
-      <div className="w-full h-full m-auto " >
-        <MapContainer
-          className='h-[100%] cursor-crosshair'
-          crs={CRS.EPSG3857}
-          center={center || [59.99426, -140.58929]}
-          zoom={zoom || 6}
-          maxZoom={10}
-          minZoom={2}
-          scrollWheelZoom={true}
-          worldCopyJump={true}
-        >
-          <LayersControl >
-            <TileLayer
-              className='cursor-crosshair'
-              attribution='Imagery provided by ESRI'
-              url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg"
-              maxNativeZoom={11}
-              tileSize={256}
-            />
-            <LayersControl.Overlay checked name='Velocity Map'>
+  const { setMap } = props
+  //Make center zoom and layers external state
+  const center = { lat: 59.99426, lng: -140.58929 }
+  const zoom = 9
+
+
+  const displayMap = useMemo(
+    () => (
+      <div className="w-full h-full">
+        <div className="w-full h-full m-auto " >
+          <MapContainer
+            className='h-[100%] cursor-crosshair'
+            crs={CRS.EPSG3857}
+            center={center}
+            zoom={zoom}
+            maxZoom={15}
+            minZoom={2}
+            scrollWheelZoom={true}
+            worldCopyJump={true}
+            ref={setMap}
+          >
+            <LayersControl >
               <TileLayer
                 className='cursor-crosshair'
-                url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
-                maxNativeZoom={11}
+                attribution='Imagery provided by ESRI'
+                url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.jpg"
+                maxNativeZoom={15}
                 tileSize={256}
               />
-            </LayersControl.Overlay>
-          </LayersControl>
-          {props.mapChildren}
-        </MapContainer>
+              <LayersControl.Overlay checked name='Velocity Map'>
+                <TileLayer
+                  className='cursor-crosshair'
+                  url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
+                  maxNativeZoom={15}
+                  tileSize={256}
+                />
+              </LayersControl.Overlay>
+            </LayersControl>
+            {props.mapChildren}
+          </MapContainer>
+        </div>
       </div>
-    </div>
+    ), [props.mapChildren])
+
+  return (
+    <>
+      {displayMap}
+    </>
   )
 };
 
