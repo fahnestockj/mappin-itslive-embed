@@ -1,6 +1,19 @@
 import { CRS } from "leaflet";
 import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
-import LatLonMapEventController from "./LatLonMapEventController";
+import iconMarker from 'leaflet/dist/images/marker-icon.png'
+import iconRetina from 'leaflet/dist/images/marker-icon-2x.png'
+import iconShadow from 'leaflet/dist/images/marker-shadow.png'
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
+//@ts-ignore
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: iconRetina,
+  iconUrl: iconMarker,
+  shadowUrl: iconShadow
+});
 
 interface IProps {
   mapChildren?: React.ReactNode
@@ -12,13 +25,6 @@ const EmbedMap = (props: IProps) => {
   const { center, zoom } = props
   return (
     <div className="w-full h-full">
-      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-        crossOrigin="" />
-      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-        crossOrigin="" />
-
       <div className="w-full h-full m-auto " >
         <MapContainer
           className='h-[100%] cursor-crosshair'

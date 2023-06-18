@@ -1,7 +1,5 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
-// import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-// import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
 import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
 import { glaciersDict } from '../types';
