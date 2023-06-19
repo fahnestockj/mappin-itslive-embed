@@ -10,6 +10,9 @@
     padding: 0px;
     text-align: left;
 }
-a.modebar-btn {
-  font-size: 20px !important;
+#mappin-embed .icon {
+    height: 20px !important;
+    width: 20px !important;
+    margin-right: 5px !important;
+    margin-left: 5px !important;
 }
