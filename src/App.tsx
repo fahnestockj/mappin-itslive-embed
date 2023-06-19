@@ -45,7 +45,7 @@ const App = () => {
 
         <ClearMarkersButton setMarkers={setMarkers} />
 
-        <ListboxTime setMarkers={setMarkers} mapRef={map} markers={markers} />
+        <ListboxTime setMarkers={setMarkers} mapRef={map} markers={markers} setTimeseriesArr={setTimeseriesArr} />
       </div>
       <div className="w-full h-1/2">
         <ChartPlotly timeseriesArr={timeseriesArr} />

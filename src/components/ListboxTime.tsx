@@ -2,17 +2,19 @@ import { Fragment, useEffect, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
-import { IGlacier, IMarker, glaciersDict } from '../types';
+import { IGlacier, IMarker, ITimeseries, glaciersDict } from '../types';
+import { malaspinaTimeseriesArr } from './ChartPlotly/mockTimeseries';
 
 type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
+  setTimeseriesArr: React.Dispatch<React.SetStateAction<ITimeseries[]>>
   markers: Array<IMarker>
   mapRef: any
 }
 export function ListboxTime(props: IProps) {
-  const { setMarkers, markers, mapRef } = props
+  const { setMarkers, markers, mapRef, setTimeseriesArr } = props
   const [selected, setSelected] = useState<IGlacier | null>(glaciersDict['Alaska'][0])
-  
+
   useEffect(() => {
     if (selected && (markers !== selected.markers)) {
       setSelected(null)
@@ -55,7 +57,9 @@ export function ListboxTime(props: IProps) {
                         <Listbox.Option
                           onClick={() => {
                             setMarkers(glacier.markers)
-
+                            if (glacier.name === 'Malaspina Glacier') {
+                              setTimeseriesArr(malaspinaTimeseriesArr)
+                            }
                             mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
                           }}
                           key={glacier.name}

@@ -1,7 +1,5 @@
 import { AiOutlineLineChart } from "react-icons/ai";
-import ProgressBarWithTimer from "./ProgressBarWithTimer";
-import { IMarker } from "../types";
-import axios from "axios";
+import { IMarker, ITimeseries } from "../types";
 import { findManyTimeseries } from "../utils/findManyTimeseries";
 import { markersInit } from "./ChartPlotly/mockMarkers";
 
@@ -10,7 +8,7 @@ type IProps = {
   setFetchInProgress: React.Dispatch<React.SetStateAction<boolean>>
   setProgress: React.Dispatch<React.SetStateAction<number>>
   markers: Array<IMarker>
-  setTimeseriesArr: React.Dispatch<React.SetStateAction<any>>
+  setTimeseriesArr: React.Dispatch<React.SetStateAction<ITimeseries[]>>
 }
 const RefreshPlotButton = (props: IProps) => {
   const { setFetchInProgress, fetchInProgress, markers, setProgress, setTimeseriesArr } = props
