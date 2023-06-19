@@ -1,20 +1,7 @@
 import { CRS } from "leaflet";
 import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
-import iconMarker from 'leaflet/dist/images/marker-icon.png'
-import iconRetina from 'leaflet/dist/images/marker-icon-2x.png'
-import iconShadow from 'leaflet/dist/images/marker-shadow.png'
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
+import './leaflet.css';
 import { useMemo } from "react";
-
-//@ts-ignore
-delete L.Icon.Default.prototype._getIconUrl;
-
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: iconRetina,
-  iconUrl: iconMarker,
-  shadowUrl: iconShadow
-});
 
 interface IProps {
   mapChildren?: React.ReactNode

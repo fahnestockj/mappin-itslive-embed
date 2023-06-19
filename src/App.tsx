@@ -1,6 +1,6 @@
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import ChartPlotly from "./components/ChartPlotly/ChartPlotly";
-import EmbedMap from "./components/EmbedMap";
+import EmbedMap from "./components/EmbedMap/EmbedMap";
 import LocationMarker from "./components/LocationMarker/LocationMarker";
 import RefreshPlotButton from "./components/RefreshPlotButton";
 import ClearMarkersButton from "./components/ClearMarkersButton";
@@ -27,8 +27,8 @@ const App = () => {
   const [velMosaicChecked, setVelMosaicChecked] = useState(true)
 
   return (
-    <div className=" max-w-[500px] md:max-w-[1000px] h-[1000px] bg-[#222222]">
-      <div className="max-w-[80%] h-full">
+    <div className=" max-w-[500px] md:max-w-[1000px] h-[1000px] bg-[#222222] flex flex-col items-center">
+      <div className="w-[80%] h-full">
 
         <div className="w-full h-[40%]">
           <EmbedMap

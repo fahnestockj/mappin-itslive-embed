@@ -37,7 +37,7 @@ const RefreshPlotButton = (props: IProps) => {
 
   return (
     <>
-      <div className="pl-3 ">
+      <div >
         <div className="group relative w-max">
           <button
             onClick={onClick}

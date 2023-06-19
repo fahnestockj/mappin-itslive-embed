@@ -26,10 +26,11 @@ export function ListboxTime(props: IProps) {
   }, [markers, selected])
 
   return (
-    <div className="px-3 z-50 w-72 pt-5 md:pt-0">
+    //NOTE: We have to use these phoney tailwind classes because sass will screw with the real ones 
+    <div className="pl-zero pr-3 z-50 w-72 pt-five md:pt-0 md:pl-three">
       <Listbox value={selected} onChange={setSelected} >
         <div className="relative ">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-3 pr-10 text-left shadow-md sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm">
             {selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
             {!selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
@@ -45,7 +46,7 @@ export function ListboxTime(props: IProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="pl-0 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  sm:text-sm">
+            <Listbox.Options className="pl-zero absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  sm:text-sm">
               {
                 Object.keys(glaciersDict).map((region) => {
                   return (

@@ -7,6 +7,21 @@ module.exports = {
   theme: {
 
     extend: {
+      padding: {
+        'five': '1.25rem',
+        'three': '0.75rem',
+        'zero': '0',
+    //     #mappin-embed .pt-5 {
+    //       padding-top: 1.25rem;
+    //   }
+      
+    //   #mappin-embed .pr-3 {
+    //       padding-right: 0.75rem;
+    //   }
+    //   #mappin-embed .pl-0 {
+    //     padding-left: 0;
+    // }
+    },
       fontFamily: {
         'sans': ['Nunito Sans', 'sans-serif'],
       },
