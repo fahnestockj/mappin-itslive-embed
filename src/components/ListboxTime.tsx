@@ -4,15 +4,19 @@ import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
 import { IGlacier, IMarker, ITimeseries, glaciersDict } from '../types';
 import { malaspinaTimeseriesArr } from './ChartPlotly/mockTimeseries';
+import { findManyTimeseries } from '../utils/findManyTimeseries';
 
 type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
   setTimeseriesArr: React.Dispatch<React.SetStateAction<ITimeseries[]>>
+  setProgress: React.Dispatch<React.SetStateAction<number>>
+  setFetchInProgress: React.Dispatch<React.SetStateAction<boolean>>
   markers: Array<IMarker>
   mapRef: any
+  setVelMosaicChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
 export function ListboxTime(props: IProps) {
-  const { setMarkers, markers, mapRef, setTimeseriesArr } = props
+  const { setMarkers, markers, mapRef, setTimeseriesArr, setProgress, setFetchInProgress, setVelMosaicChecked } = props
   const [selected, setSelected] = useState<IGlacier | null>(glaciersDict['Alaska'][0])
 
   useEffect(() => {
@@ -55,12 +59,30 @@ export function ListboxTime(props: IProps) {
                       </Listbox.Option>
                       {glaciersDict[region].map((glacier) => (
                         <Listbox.Option
-                          onClick={() => {
+                          onClick={async () => {
+                            setVelMosaicChecked(false)
                             setMarkers(glacier.markers)
+                            setTimeseriesArr([])
+                            mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
+
                             if (glacier.name === 'Malaspina Glacier') {
                               setTimeseriesArr(malaspinaTimeseriesArr)
                             }
-                            mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
+                            else {
+                              setFetchInProgress(true)
+                              const res = await findManyTimeseries(glacier.markers).catch(err => {
+                                console.log(err)
+                                setProgress(0)
+                              })
+
+                              console.log(res);
+                              setTimeseriesArr(res || [])
+                              setFetchInProgress(false)
+                              setProgress(100)
+                            }
+
+
+
                           }}
                           key={glacier.name}
                           className={({ active }) =>

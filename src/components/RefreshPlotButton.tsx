@@ -58,7 +58,7 @@ const RefreshPlotButton = (props: IProps) => {
             <AiOutlineLineChart className='scale-150 mr-2 mb-[2px]' />
             Plot
           </button>
-          {disabled && <span
+          {markersInDictionary && <span
             className="pointer-events-none absolute -top-5 -left-2 w-max opacity-0 transition-opacity group-hover:opacity-100 shadow-lg text-white"
           >
             Try moving a marker!

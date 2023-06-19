@@ -19,10 +19,11 @@ L.Icon.Default.mergeOptions({
 interface IProps {
   mapChildren?: React.ReactNode
   setMap: React.Dispatch<React.SetStateAction<any>>
+  velMosaicChecked: boolean
 }
 
 const EmbedMap = (props: IProps) => {
-  const { setMap } = props
+  const { setMap, velMosaicChecked } = props
   //Make center zoom and layers external state
   const center = { lat: 59.99426, lng: -140.58929 }
   const zoom = 9
@@ -51,7 +52,7 @@ const EmbedMap = (props: IProps) => {
                 maxNativeZoom={15}
                 tileSize={256}
               />
-              <LayersControl.Overlay checked name='Velocity Map'>
+              <LayersControl.Overlay checked={velMosaicChecked} name='Velocity Map'>
                 <TileLayer
                   className='cursor-crosshair'
                   url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
@@ -64,7 +65,7 @@ const EmbedMap = (props: IProps) => {
           </MapContainer>
         </div>
       </div>
-    ), [props.mapChildren])
+    ), [props.mapChildren, velMosaicChecked])
 
   return (
     <>

@@ -1,16 +1,15 @@
 import { useMapEvents } from "react-leaflet"
 import { createMarker } from "../utils/createMarker";
-import { ICoordinate, IMarker } from "../types";
-import { useCallback, useState } from "react";
+import { IMarker } from "../types";
 
 type IProps = {
   markers: Array<IMarker>
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
+  setVelMosaicChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
 const LatLonMapEventController = (props: IProps) => {
-  const [mosaicLayerHidden, setMosaicLayerHidden] = useState<boolean>(false)
 
-  const { markers, setMarkers } = props
+  const { markers, setMarkers, setVelMosaicChecked } = props
   useMapEvents({
     click(e) {
       createMarker({
@@ -24,13 +23,13 @@ const LatLonMapEventController = (props: IProps) => {
     layeradd(e) {
       //@ts-ignore
       if (e.layer._url === 'https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png') {
-        setMosaicLayerHidden(false)
+        setVelMosaicChecked(true)
       }
     },
     layerremove(e) {
       //@ts-ignore
       if (e.layer._url === 'https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png') {
-        setMosaicLayerHidden(true)
+        setVelMosaicChecked(false)
       }
     },
   })
