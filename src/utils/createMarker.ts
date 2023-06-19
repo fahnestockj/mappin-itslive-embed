@@ -1,7 +1,6 @@
 import { createId } from "@paralleldrive/cuid2"
 import produce from "immer"
 import { getColor } from "./getColor"
-import { markersToUrlParams } from "./markerParamUtilities"
 import { IMarker } from "../types"
 
 type IProps = {
