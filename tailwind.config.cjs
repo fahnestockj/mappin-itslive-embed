@@ -7,6 +7,9 @@ module.exports = {
   theme: {
 
     extend: {
+      fontFamily: {
+        'sans': ['Nunito Sans', 'sans-serif'],
+      },
       colors: {
         'mappin-blue': '#0081A1',
         'mappin-blue-hover': '#4c7f8c'

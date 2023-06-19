@@ -9,11 +9,11 @@ const Plot = createPlotlyComponent(Plotly)
 
 type IProps = {
   timeseriesArr: Array<ITimeseries>
+  md: boolean
 }
 
 const ChartPlotly = (props: IProps) => {
-  const { timeseriesArr } = props
-  
+  const { timeseriesArr, md } = props
   return (
     <div className='w-full h-full'>
       <Plot
@@ -29,8 +29,8 @@ const ChartPlotly = (props: IProps) => {
             }
           })
         }
-        layout={{ autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' } }}
-        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false }}
+        layout={{showlegend: md, autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' } }}
+        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, responsive: true  }}
         className='w-full h-full'
       />
 

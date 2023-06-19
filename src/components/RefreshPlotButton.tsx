@@ -1,5 +1,5 @@
 import { AiOutlineLineChart } from "react-icons/ai";
-import { IMarker, ITimeseries } from "../types";
+import { IMarker, ITimeseries, glaciersDict } from "../types";
 import { findManyTimeseries } from "../utils/findManyTimeseries";
 import { markersInit } from "./ChartPlotly/mockMarkers";
 
@@ -19,37 +19,47 @@ const RefreshPlotButton = (props: IProps) => {
       console.log(err)
       setProgress(0)
     })
-    
+
     console.log(res);
     setTimeseriesArr(res || [])
     setFetchInProgress(false)
     setProgress(100)
 
   }
-  const disabled = markers === markersInit || fetchInProgress
+
+  /**
+   * NOTE: feels too clever (and brittle)
+   * checks the markers by reference to see if they are in the dictionary
+   */
+  const allDictionaryMarkers = Object.keys(glaciersDict).map(key => glaciersDict[key].map(glacier => glacier.markers)).flat()
+  const markersInDictionary = Boolean(allDictionaryMarkers.find(markersArr => markersArr === markers))
+  const disabled =  markersInDictionary || fetchInProgress
 
   return (
     <>
-      <div className="py-5 pl-3 ">
+      <div className="pl-3 ">
         <div className="group relative w-max">
           <button
             onClick={onClick}
             type="button"
-            className=" inline-flex items-center rounded-md border border-transparent  px-6 py-3 text-base font-medium text-white shadow-sm  
+            className=" 
+            inline-flex items-center rounded-md border border-transparent  
+            px-6 py-3 text-base font-medium text-white shadow-sm  
             focus:outline-none focus:ring-2 focus:ring-[#179abb] 
-          focus:ring-offset-2 
-          bg-mappin-blue
-          hover:bg-mappin-blue
-          disabled:opacity-50 
-          disabled:hover:mappin-blue
+            focus:ring-offset-2 
+            bg-mappin-blue
+            hover:bg-mappin-blue
+            disabled:opacity-50 
+            disabled:hover:mappin-blue
+            font-sans
           "
             disabled={disabled}
           >
             <AiOutlineLineChart className='scale-150 mr-2 mb-[2px]' />
             Plot
           </button>
-          {markers === markersInit && <span
-            className="pointer-events-none absolute -top-5 left-0 w-max opacity-0 transition-opacity group-hover:opacity-100 shadow-lg text-white"
+          {disabled && <span
+            className="pointer-events-none absolute -top-5 -left-2 w-max opacity-0 transition-opacity group-hover:opacity-100 shadow-lg text-white"
           >
             Try moving a marker!
           </span>

@@ -40,41 +40,58 @@ export const glaciersDict: Record<IRegion, Array<IGlacier>> = {
       name: 'Columbia Glacier',
       markers: [
         {
-          id: 'Columbia Glacier',
+          id: 'm1Columbia',
           color: 'blue',
-          latLon: { lat: 60.176, lon: -147.722 },
-        }
-      ],
-      zoomLevel: 10,
-      center: { lat: 60.176, lon: -147.722 }
-
-    },
-    {
-      name: 'Mendenhall Glacier',
-      markers: [
+          latLon: { lat: 60.27524, lon: -148.43079 },
+        },
         {
-          id: 'Mendenhall Glacier',
-          color: 'blue',
-          latLon: { lat: 58.435, lon: -134.554 },
+          id: 'm2Columbia',
+          color: 'red',
+          latLon: { lat: 60.27388, lon: -148.51387 },
+        },
+        {
+          id: 'm33Columbia',
+          color: 'yellow',
+          latLon: { lat: 60.26025, lon: -148.56056 },
         }
       ],
+
       zoomLevel: 10,
-      center: { lat: 58.435, lon: -134.554 }
-    }
+      center: { lat: 60.28000, lon: -148.49396 }
+    },
   ],
   'Washington': [
     {
       name: 'South Cascade Glacier',
       markers: [
         {
-          id: 'South Cascade Glacier',
+          id: 'mk1SouthCascade',
           color: 'blue',
-          latLon: { lat: 48.5, lon: -121.0 },
+          latLon: { lat: 48.36, lon: -121.0575 },
         }
       ],
-      zoomLevel: 10,
-      center: { lat: 48.5, lon: -121.0 }
+      zoomLevel: 14,
+      center: { lat: 48.36, lon: -121.0575 },
     },
   ],
+  'Greenland': [
+    {
+      name: 'Jakobshavn Glacier',
+      markers: [
+        {
+          id: 'mk1JakobshavnGlacier',
+          color: 'blue',
+          latLon: { lat: 69.1488, lon: -49.5903 },
+        },
 
+        {
+          id: 'mk2JakobshavnGlacier',
+          color: 'green',
+          latLon: { lat: 69.16060, lon: -49.51263 },
+        },
+      ],
+      zoomLevel: 10,
+      center: { lat: 69.16060, lon: -49.51263 },
+    },
+  ]
 }

@@ -22,12 +22,12 @@ export function ListboxTime(props: IProps) {
   }, [markers, selected])
 
   return (
-    <div className="z-50 w-72 pl-3">
+    <div className="px-3 z-50 w-72 pt-5 md:pt-0">
       <Listbox value={selected} onChange={setSelected} >
         <div className="relative ">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-3 pr-10 text-left shadow-md sm:text-sm">
-            {selected && <span className="block truncate">{selected.name}</span>}
-            {!selected && <span className="block truncate">Select a glacier</span>}
+            {selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
+            {!selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <BsChevronExpand
                 className="h-5 w-5 text-gray-400"
@@ -47,7 +47,7 @@ export function ListboxTime(props: IProps) {
                   return (
                     <div key={region}>
                       <Listbox.Option
-                        className='list-none relative cursor-default select-none py-2 pl-10 pr-4 text-black font-bold text-md bg-slate-200'
+                        className='font-sans list-none relative cursor-default select-none py-2 pl-10 pr-4 text-black font-bold text-md bg-slate-200'
                         disabled={true}
                         value={region}
                       >
@@ -64,7 +64,7 @@ export function ListboxTime(props: IProps) {
                           }}
                           key={glacier.name}
                           className={({ active }) =>
-                            `list-none relative cursor-default select-none py-2 pl-14 pr-4 ${active ? 'bg-sky-100 text-sky-900' : 'text-gray-900'
+                            `font-sans list-none relative cursor-default select-none py-2 pl-14 pr-4 ${active ? 'bg-sky-100 text-sky-900' : 'text-gray-900'
                             }`
                           }
                           value={glacier}
@@ -72,7 +72,7 @@ export function ListboxTime(props: IProps) {
                           {({ selected }) => (
                             <>
                               <span
-                                className={`block truncate ${selected ? 'font-medium' : 'font-normal'
+                                className={`font-sans block truncate  text-gray-700 ${selected ? 'font-medium' : 'font-normal'
 
                                   }`}
                               >
