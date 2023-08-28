@@ -1,6 +1,6 @@
 import createPlotlyComponent from 'react-plotly.js/factory'
 import Plotly from 'plotly.js-basic-dist-min'
-import { IMarker, ITimeseries } from '../../types';
+import { IMarker, ITimeseries, colorHexDict } from '../../types';
 import { useEffect, useState } from 'react';
 import { findManyTimeseries } from '../../utils/findManyTimeseries';
 import ProgressBarWithTimer from '../ProgressBarWithTimer';
@@ -24,7 +24,7 @@ const ChartPlotly = (props: IProps) => {
               y: timeseries.data.velocityArray,
               type: 'scatter',
               mode: 'markers',
-              marker: { color: timeseries.marker.color },
+              marker: { color: colorHexDict[timeseries.marker.color] },
               name: `Lat: ${timeseries.marker.latLon.lat}, Lon: ${timeseries.marker.latLon.lon}`
             }
           })

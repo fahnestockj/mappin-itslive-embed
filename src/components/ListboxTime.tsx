@@ -3,7 +3,6 @@ import { Listbox, Transition } from '@headlessui/react'
 import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
 import { IGlacier, IMarker, ITimeseries, glaciersDict } from '../types';
-import { malaspinaTimeseriesArr } from './ChartPlotly/mockTimeseries';
 import { findManyTimeseries } from '../utils/findManyTimeseries';
 
 type IProps = {
@@ -17,7 +16,7 @@ type IProps = {
 }
 export function ListboxTime(props: IProps) {
   const { setMarkers, markers, mapRef, setTimeseriesArr, setProgress, setFetchInProgress, setVelMosaicChecked } = props
-  const [selected, setSelected] = useState<IGlacier | null>(glaciersDict['Alaska'][0])
+  const [selected, setSelected] = useState<IGlacier | null>(glaciersDict["Alaska/Yukon"][0])
 
   useEffect(() => {
     if (selected && (markers !== selected.markers)) {
@@ -26,10 +25,10 @@ export function ListboxTime(props: IProps) {
   }, [markers, selected])
 
   return (
-    //NOTE: We have to use these phoney tailwind classes because sass will screw with the real ones 
+    //NOTE: We have to use these phoney tailwind classes because its_live homepage sass will screw with the real ones 
     <div className="pl-zero pr-3 z-50 w-72 pt-five md:pt-0 md:pl-three">
       <Listbox value={selected} onChange={setSelected} >
-        <div className="relative ">
+        <div className="relative">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm">
             {selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
             {!selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
@@ -66,24 +65,15 @@ export function ListboxTime(props: IProps) {
                             setTimeseriesArr([])
                             mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
 
-                            if (glacier.name === 'Malaspina Glacier') {
-                              setTimeseriesArr(malaspinaTimeseriesArr)
-                            }
-                            else {
-                              setFetchInProgress(true)
-                              const res = await findManyTimeseries(glacier.markers).catch(err => {
-                                console.log(err)
-                                setProgress(0)
-                              })
-
-                              console.log(res);
-                              setTimeseriesArr(res || [])
-                              setFetchInProgress(false)
-                              setProgress(100)
-                            }
-
-
-
+                            setFetchInProgress(true)
+                            const res = await findManyTimeseries(glacier.markers).catch(err => {
+                              console.log(err)
+                              setProgress(0)
+                            })
+                            console.log(res);
+                            setTimeseriesArr(res || [])
+                            setFetchInProgress(false)
+                            setProgress(100)
                           }}
                           key={glacier.name}
                           className={({ active }) =>
@@ -95,9 +85,7 @@ export function ListboxTime(props: IProps) {
                           {({ selected }) => (
                             <>
                               <span
-                                className={`font-sans block truncate  text-gray-700 ${selected ? 'font-medium' : 'font-normal'
-
-                                  }`}
+                                className={`font-sans block truncate  text-gray-700 ${selected ? 'font-medium' : 'font-normal'}`}
                               >
                                 {glacier.name}
                               </span>

@@ -1,0 +1,352 @@
+{
+  "Greenland": {
+    "Sermeq Kujalleq [Jakobshavns Isbrae]": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=69.13788&lon=-49.55383&c=b&lat=69.10752&lon=-49.4577&c=g&lat=69.11634&lon=-49.25171&c=r&lat=69.13886&lon=-49.04022&c=y",
+      "points": [
+        [
+          -49.55383,
+          69.13788
+        ],
+        [
+          -49.4577,
+          69.10752
+        ],
+        [
+          -49.25171,
+          69.11634
+        ],
+        [
+          -49.04022,
+          69.13886
+        ]
+      ],
+      "center_point": [
+        -49.55383,
+        69.13788
+      ],
+      "zoom": 7
+    },
+    "Helheim Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=66.36464&lon=-38.2077&c=b&lat=66.41196&lon=-38.37799&c=g&lat=66.51839&lon=-38.53455&c=r&lat=66.59163&lon=-38.71033&c=y",
+      "points": [
+        [
+          -38.2077,
+          66.36464
+        ],
+        [
+          -38.37799,
+          66.41196
+        ],
+        [
+          -38.53455,
+          66.51839
+        ],
+        [
+          -38.71033,
+          66.59163
+        ]
+      ],
+      "center_point": [
+        -38.37799,
+        66.41196
+      ],
+      "zoom": 7
+    },
+    "Narsap Sermia": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=64.64506&lon=-49.94934&c=b&lat=64.6674&lon=-49.8587&c=g&lat=64.70849&lon=-49.65546&c=r&lat=64.74553&lon=-49.36157&c=y",
+      "points": [
+        [
+          -49.94934,
+          64.64506
+        ],
+        [
+          -49.8587,
+          64.6674
+        ],
+        [
+          -49.65546,
+          64.70849
+        ],
+        [
+          -49.36157,
+          64.74553
+        ]
+      ],
+      "center_point": [
+        -49.94934,
+        64.64506
+      ],
+      "zoom": 7
+    },
+    "Zacharie Isstrom": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=78.90276&lon=-20.56091&c=b&lat=78.91227&lon=-21.00037&c=g&lat=78.90434&lon=-21.46179&c=r&lat=78.88847&lon=-21.87378&c=y",
+      "points": [
+        [
+          -20.56091,
+          78.90276
+        ],
+        [
+          -21.00037,
+          78.91227
+        ],
+        [
+          -21.46179,
+          78.90434
+        ],
+        [
+          -21.87378,
+          78.88847
+        ]
+      ],
+      "center_point": [
+        -21.00037,
+        78.91227
+      ],
+      "zoom": 6
+    }
+  },
+  "Antarctica": {
+    "Pine Island Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=-75.0296&lon=-100.88196&c=ll&lat=-75.19479&lon=-99.63501&c=cpg&lat=-75.34291&lon=-98.49243&c=reb&lat=-75.41994&lon=-96.9104&c=c",
+      "points": [
+        [
+          -100.88196,
+          -75.0296
+        ],
+        [
+          -99.63501,
+          -75.19479
+        ],
+        [
+          -98.49243,
+          -75.34291
+        ],
+        [
+          -96.9104,
+          -75.41994
+        ]
+      ],
+      "center_point": [
+        -99.63501,
+        -75.19479
+      ],
+      "zoom": 5
+    },
+    "Thwaites Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=-75.21399&lon=-106.61133&c=b&lat=-75.44225&lon=-106.90247&c=g&lat=-75.63302&lon=-107.39685&c=r&lat=-75.80113&lon=-107.93518&c=y",
+      "points": [
+        [
+          -106.61133,
+          -75.21399
+        ],
+        [
+          -106.90247,
+          -75.44225
+        ],
+        [
+          -107.39685,
+          -75.63302
+        ],
+        [
+          -107.93518,
+          -75.80113
+        ]
+      ],
+      "center_point": [
+        -106.90247,
+        -75.44225
+      ],
+      "zoom": 5
+    }
+  },
+  "South America": {
+    "Upsala Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=-49.88976&lon=-73.28018&c=b&lat=-49.83636&lon=-73.26782&c=g&lat=-49.76631&lon=-73.27744&c=r&lat=-49.68638&lon=-73.31451&c=y",
+      "points": [
+        [
+          -73.28018,
+          -49.88976
+        ],
+        [
+          -73.26782,
+          -49.83636
+        ],
+        [
+          -73.27744,
+          -49.76631
+        ],
+        [
+          -73.31451,
+          -49.68638
+        ]
+      ],
+      "center_point": [
+        -73.26782,
+        -49.83636
+      ],
+      "zoom": 8
+    }
+  },
+  "Alaska/Yukon": {
+    "Malaspina Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=60.08343&lon=-140.46707&c=b&lat=60.02582&lon=-140.57831&c=g&lat=59.92546&lon=-140.72388&c=r&lat=59.83722&lon=-140.80765&c=y",
+      "points": [
+        [
+          -140.46707,
+          60.08343
+        ],
+        [
+          -140.57831,
+          60.02582
+        ],
+        [
+          -140.72388,
+          59.92546
+        ],
+        [
+          -140.80765,
+          59.83722
+        ]
+      ],
+      "center_point": [
+        -140.57831,
+        60.02582
+      ],
+      "zoom": 6
+    },
+    "Hubbard Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=60.01467&lon=-139.48654&c=b&lat=60.04075&lon=-139.41101&c=g&lat=60.0579&lon=-139.32449&c=r&lat=60.11476&lon=-139.30252&c=y",
+      "points": [
+        [
+          -139.48654,
+          60.01467
+        ],
+        [
+          -139.41101,
+          60.04075
+        ],
+        [
+          -139.32449,
+          60.0579
+        ],
+        [
+          -139.30252,
+          60.11476
+        ]
+      ],
+      "center_point": [
+        -139.48654,
+        60.01467
+      ],
+      "zoom": 8
+    },
+    "Columbia Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=61.17371&lon=-146.99432&c=b&lat=61.18993&lon=-146.93939&c=g&lat=61.21525&lon=-146.90643&c=r&lat=61.25822&lon=-146.91193&c=y",
+      "points": [
+        [
+          -146.99432,
+          61.17371
+        ],
+        [
+          -146.93939,
+          61.18993
+        ],
+        [
+          -146.90643,
+          61.21525
+        ],
+        [
+          -146.91193,
+          61.25822
+        ]
+      ],
+      "center_point": [
+        -146.99432,
+        61.17371
+      ],
+      "zoom": 8
+    },
+    "Klutlan Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=61.4578&lon=-141.21414&c=ll&lat=61.45058&lon=-141.04935&c=cpg&lat=61.44597&lon=-140.83443&c=reb&lat=61.45812&lon=-140.64423&c=c",
+      "points": [
+        [
+          -141.21414,
+          61.4578
+        ],
+        [
+          -141.04935,
+          61.45058
+        ],
+        [
+          -140.83443,
+          61.44597
+        ],
+        [
+          -140.64423,
+          61.45812
+        ]
+      ],
+      "center_point": [
+        -141.04935,
+        61.45058
+      ],
+      "zoom": 7
+    }
+  },
+  "Canadian Arctic": {
+    "Trinity Glacier": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=78.03325&lon=-79.22653&c=b&lat=78.04407&lon=-78.87497&c=g&lat=78.00473&lon=-78.71704&c=r&lat=77.96044&lon=-78.5495&c=y",
+      "points": [
+        [
+          -79.22653,
+          78.03325
+        ],
+        [
+          -78.87497,
+          78.04407
+        ],
+        [
+          -78.71704,
+          78.00473
+        ],
+        [
+          -78.5495,
+          77.96044
+        ]
+      ],
+      "center_point": [
+        -78.71704,
+        78.00473
+      ],
+      "zoom": 7
+    }
+  },
+  "Svalbard": {
+    "Storisstraumen": {
+      "url": "https://mappin.itsliveiceflow.science/chart?lat=79.45549&lon=24.9884&c=b&lat=79.50065&lon=24.64783&c=g&lat=79.56653&lon=24.22485&c=r&lat=79.68331&lon=23.9502&c=y",
+      "points": [
+        [
+          24.9884,
+          79.45549
+        ],
+        [
+          24.64783,
+          79.50065
+        ],
+        [
+          24.22485,
+          79.56653
+        ],
+        [
+          23.9502,
+          79.68331
+        ]
+      ],
+      "center_point": [
+        24.64783,
+        79.50065
+      ],
+      "zoom": 6
+    }
+  }
+}
