@@ -26,11 +26,12 @@ const App = () => {
   const [velMosaicChecked, setVelMosaicChecked] = useState(true)
 
   useEffect(() => {
-    (async () => {
-      const res = await findManyTimeseries(markers).catch(err => {
-        console.log(err)
-        setProgress(0)
-      })
+
+    console.log('fetching timeseries');
+    findManyTimeseries(markers).catch(err => {
+      console.log(err)
+      setProgress(0)
+    }).then(res => {
       setTimeseriesArr(res || [])
       setFetchInProgress(false)
       setProgress(100)
