@@ -14,7 +14,6 @@ export async function findManyTimeseries(markerArr: Array<IMarker>): Promise<Arr
   for (const { marker, zarrUrl, cartesianCoordinate } of geoJsonLookupRes) {
     
     const httpsUrl = zarrUrl.replace('http', 'https')
-    
     const store = new HTTPStore(httpsUrl, { fetchOptions: {}, supportedMethods: ["GET" as HTTPMethod] });
 
     const xArrayZarr = await openArray({
@@ -80,14 +79,15 @@ export async function findManyTimeseries(markerArr: Array<IMarker>): Promise<Arr
     for (let i = 0; i < timeseriesArr.length; i++) {
       if (timeseriesArr[i] === -32767) continue
       velocityArray.push(timeseriesArr[i])
-      midDateArray.push(new Date(midDateArr[i] * 86400000))
+      midDateArray.push(new Date(midDateArr[i] * 86_400_000))
+
     } 
 
     results.push({
       marker,
       data: {
         midDateArray,
-        velocityArray
+        velocityArray,
       }
     })
   }

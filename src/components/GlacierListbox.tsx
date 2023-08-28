@@ -14,7 +14,7 @@ type IProps = {
   mapRef: any
   setVelMosaicChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
-export function ListboxTime(props: IProps) {
+export function GlacierListbox(props: IProps) {
   const { setMarkers, markers, mapRef, setTimeseriesArr, setProgress, setFetchInProgress, setVelMosaicChecked } = props
   const [selected, setSelected] = useState<IGlacier | null>(glaciersDict["Alaska/Yukon"][0])
 
@@ -26,10 +26,10 @@ export function ListboxTime(props: IProps) {
 
   return (
     //NOTE: We have to use these phoney tailwind classes because its_live homepage sass will screw with the real ones 
-    <div className="pl-zero pr-3 z-50 w-72 pt-five md:pt-0 md:pl-three">
+    <div className="pl-zero pr-3 z-50 w-[21rem] pt-five md:pt-0 md:pl-three">
       <Listbox value={selected} onChange={setSelected} >
         <div className="relative">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm">
+          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm border-0">
             {selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
             {!selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">

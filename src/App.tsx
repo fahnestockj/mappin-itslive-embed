@@ -8,7 +8,7 @@ import ClearMarkersButton from "./components/ClearMarkersButton";
 import LatLonMapEventController from "./components/LatLonMapEventController";
 import { IMarker, ITimeseries, glaciersDict } from "./types";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
-import { ListboxTime } from "./components/ListboxTime";
+import { GlacierListbox } from "./components/GlacierListbox";
 //@ts-ignore
 import { useBreakpoints } from 'react-breakpoints-hook'
 
@@ -23,11 +23,10 @@ const App = () => {
   const [timeseriesArr, setTimeseriesArr] = useState<Array<ITimeseries>>([])
   const [progress, setProgress] = useState<number>(0)
   const [fetchInProgress, setFetchInProgress] = useState<boolean>(true)
-  const [velMosaicChecked, setVelMosaicChecked] = useState(true)
+  const [velMosaicChecked, setVelMosaicChecked] = useState(false)
 
   useEffect(() => {
 
-    console.log('fetching timeseries');
     findManyTimeseries(markers).catch(err => {
       console.log(err)
       setProgress(0)
@@ -75,9 +74,10 @@ const App = () => {
           <ClearMarkersButton
             md={md}
             setMarkers={setMarkers}
+            setTimeseriesArr={setTimeseriesArr}
           />
 
-          <ListboxTime
+          <GlacierListbox
             setMarkers={setMarkers}
             mapRef={mapRef}
             markers={markers}

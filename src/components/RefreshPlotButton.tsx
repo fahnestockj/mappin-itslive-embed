@@ -14,6 +14,7 @@ const RefreshPlotButton = (props: IProps) => {
 
   const onClick = async () => {
     setFetchInProgress(true)
+    setTimeseriesArr([])
     const res = await findManyTimeseries(markers).catch(err => {
       console.log(err)
       setProgress(0)
@@ -40,14 +41,12 @@ const RefreshPlotButton = (props: IProps) => {
             onClick={onClick}
             type="button"
             className=" 
-            inline-flex items-center rounded-md border border-transparent  
+            inline-flex items-center rounded-md border-transparent  
             px-6 py-3 text-base font-medium text-white shadow-sm  
-            focus:outline-none focus:ring-2 focus:ring-[#179abb] 
-            focus:ring-offset-2 
             bg-mappin-blue
-            hover:bg-mappin-blue
+            hover:opacity-80
+            active:opacity-70
             disabled:opacity-50 
-            disabled:hover:mappin-blue
             font-sans
           "
             disabled={disabled}

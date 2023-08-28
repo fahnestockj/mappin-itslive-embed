@@ -1,9 +1,6 @@
 import createPlotlyComponent from 'react-plotly.js/factory'
-import Plotly from 'plotly.js-basic-dist-min'
-import { IMarker, ITimeseries, colorHexDict } from '../../types';
-import { useEffect, useState } from 'react';
-import { findManyTimeseries } from '../../utils/findManyTimeseries';
-import ProgressBarWithTimer from '../ProgressBarWithTimer';
+import Plotly from 'plotly.js-gl2d-dist-min'
+import { ITimeseries, colorHexDict } from '../../types';
 
 const Plot = createPlotlyComponent(Plotly)
 
@@ -22,15 +19,21 @@ const ChartPlotly = (props: IProps) => {
             return {
               x: timeseries.data.midDateArray,
               y: timeseries.data.velocityArray,
-              type: 'scatter',
+              type: 'scattergl',
               mode: 'markers',
-              marker: { color: colorHexDict[timeseries.marker.color] },
-              name: `Lat: ${timeseries.marker.latLon.lat}, Lon: ${timeseries.marker.latLon.lon}`
+              marker: {
+                color: colorHexDict[timeseries.marker.color],
+              },
+              name: `Lat: ${timeseries.marker.latLon.lat.toFixed(3)}, Lon: ${timeseries.marker.latLon.lon.toFixed(3)}`
             }
           })
         }
-        layout={{showlegend: md, autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' } }}
-        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, responsive: true  }}
+        layout={{
+          showlegend: md, 
+          autosize: true, title: `ITS_LIVE Ice Flow Speed m/yr | # of pts: ${timeseriesArr.reduce((acc, curr) => acc + curr.data.velocityArray.length, 0)}`,
+          xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' }
+        }}
+        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, modeBarButtonsToRemove: ['select2d', 'lasso2d', 'resetScale2d'] }}
         className='w-full h-full'
       />
 
