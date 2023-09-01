@@ -1,16 +1,15 @@
 import createPlotlyComponent from 'react-plotly.js/factory'
 import Plotly from 'plotly.js-gl2d-dist-min'
-import { ITimeseries, colorHexDict } from '../../types';
+import { ITimeseries, colorHexDict } from '../types';
 
 const Plot = createPlotlyComponent(Plotly)
 
 type IProps = {
   timeseriesArr: Array<ITimeseries>
-  md: boolean
 }
 
-const ChartPlotly = (props: IProps) => {
-  const { timeseriesArr, md } = props
+const PlotlyChart = (props: IProps) => {
+  const { timeseriesArr } = props
   return (
     <div className='w-full h-full'>
       <Plot
@@ -29,11 +28,10 @@ const ChartPlotly = (props: IProps) => {
           })
         }
         layout={{
-          showlegend: md, 
-          autosize: true, title: `ITS_LIVE Ice Flow Speed m/yr | # of pts: ${timeseriesArr.reduce((acc, curr) => acc + curr.data.velocityArray.length, 0)}`,
+          autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr',
           xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' }
         }}
-        config={{ doubleClick: 'autosize', displaylogo: false, showTips: false, modeBarButtonsToRemove: ['select2d', 'lasso2d', 'resetScale2d'] }}
+        config={{ responsive:true, doubleClick: 'autosize', displaylogo: false, showTips: false, modeBarButtonsToRemove: ['select2d', 'lasso2d', 'resetScale2d'] }}
         className='w-full h-full'
       />
 
@@ -41,4 +39,4 @@ const ChartPlotly = (props: IProps) => {
   )
 };
 
-export default ChartPlotly;
+export default PlotlyChart;

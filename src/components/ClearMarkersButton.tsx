@@ -4,17 +4,16 @@ import { BiTrash } from "react-icons/bi";
 type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<any[]>>
   setTimeseriesArr: React.Dispatch<React.SetStateAction<any[]>>
-  md: boolean
 }
 const ClearMarkersButton = (props: IProps) => {
-  const { setMarkers, setTimeseriesArr, md } = props
+  const { setMarkers, setTimeseriesArr } = props
   return (
-    <div className="pl-3">
-
-      <div className="group relative w-max">
+    <div className="h-[52px] min-w-[220px]">
+      <div className="group relative h-full w-full">
         <button
           type="button"
           className="
+        h-full w-full
         font-sans inline-flex items-center rounded-md border-0
         border-gray-300 bg-white px-6 py-3 text-base 
         font-medium text-gray-700 shadow-sm hover:bg-gray-200
@@ -26,7 +25,7 @@ const ClearMarkersButton = (props: IProps) => {
           }}
         >
           <BiTrash className='scale-150 mr-2 mb-[2px]' />
-          Clear {md && 'Markers'}
+          Clear Markers
         </button>
       </div>
     </div>

@@ -25,13 +25,12 @@ export function GlacierListbox(props: IProps) {
   }, [markers, selected])
 
   return (
-    //NOTE: We have to use these phoney tailwind classes because its_live homepage sass will screw with the real ones 
-    <div className="pl-zero pr-3 z-50 w-[21rem] pt-five md:pt-0 md:pl-three">
+    <div className="z-50 w-[22rem] h-[52px]">
       <Listbox value={selected} onChange={setSelected} >
-        <div className="relative">
-          <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm border-0">
-            {selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
-            {!selected && <span className="font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
+        <div className="relative h-full">
+          <Listbox.Button className="relative w-full h-full cursor-default rounded-lg bg-white py-[13px] pl-three pr-10 text-left shadow-md sm:text-sm border-0">
+            {selected && <span className="!ml-2 font-sans text-base font-medium text-gray-700 block truncate">{selected.name}</span>}
+            {!selected && <span className="!ml-2 font-sans text-base font-medium text-gray-700 block truncate">Select a glacier</span>}
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
               <BsChevronExpand
                 className="h-5 w-5 text-gray-400"
@@ -45,7 +44,7 @@ export function GlacierListbox(props: IProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Listbox.Options className="pl-zero absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  sm:text-sm">
+            <Listbox.Options className="!pl-0 absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none  sm:text-sm">
               {
                 Object.keys(glaciersDict).map((region) => {
                   return (

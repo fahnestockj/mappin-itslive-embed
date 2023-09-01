@@ -26,16 +26,15 @@ const RefreshPlotButton = (props: IProps) => {
   }
 
   /**
-   * NOTE: feels too clever (and brittle)
+   * NOTE: feels too clever (brittle)
    * checks the markers by reference to see if they are in the dictionary
    */
   const allDictionaryMarkers = Object.keys(glaciersDict).map(key => glaciersDict[key].map(glacier => glacier.markers)).flat()
   const markersInDictionary = Boolean(allDictionaryMarkers.find(markersArr => markersArr === markers))
-  const disabled =  markersInDictionary || fetchInProgress
+  const disabled = markersInDictionary || fetchInProgress
 
   return (
-    <>
-      <div >
+      <div className="h-[52px] mr-3">
         <div className="group relative w-max">
           <button
             onClick={onClick}
@@ -62,7 +61,6 @@ const RefreshPlotButton = (props: IProps) => {
           }
         </div>
       </div>
-    </>
   )
 };
 
