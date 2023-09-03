@@ -7,7 +7,7 @@ type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
   setVelMosaicChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
-const LatLonMapEventController = (props: IProps) => {
+const MapEventController = (props: IProps) => {
 
   const { markers, setMarkers, setVelMosaicChecked } = props
   useMapEvents({
@@ -37,4 +37,4 @@ const LatLonMapEventController = (props: IProps) => {
   return null
 }
 
-export default LatLonMapEventController
+export default MapEventController

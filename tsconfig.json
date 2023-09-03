@@ -19,7 +19,7 @@
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "typeRoots": [
-    "src/customTypes", // this path may vary depending on you project set up.
+    "src/customTypes",
     "node_modules/@types"
   ]
 }

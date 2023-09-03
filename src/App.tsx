@@ -5,7 +5,7 @@ import EmbedMap from "./components/EmbedMap/EmbedMap";
 import LocationMarker from "./components/LocationMarker/LocationMarker";
 import RefreshPlotButton from "./components/RefreshPlotButton";
 import ClearMarkersButton from "./components/ClearMarkersButton";
-import LatLonMapEventController from "./components/LatLonMapEventController";
+import MapEventController from "./components/MapEventController";
 import { IMarker, ITimeseries, glaciersDict } from "./types";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
 import { GlacierListbox } from "./components/GlacierListbox";
@@ -50,7 +50,7 @@ const App = () => {
                     setMarkers={setMarkers}
                   />
                 ))}
-                <LatLonMapEventController
+                <MapEventController
                   markers={markers}
                   setMarkers={setMarkers}
                   setVelMosaicChecked={setVelMosaicChecked}
@@ -60,7 +60,7 @@ const App = () => {
             setMap={setMapRef}
           />
         </div>
-        <div className="w-full flex md:flex-row items-center min-h-min my-5 flex-col">
+        <div className="w-full flex md:flex-row items-center min-h-min !my-5 flex-col">
           <div className="flex flex-row md:justify-start w-1/2 justify-center">
             <RefreshPlotButton
               fetchInProgress={fetchInProgress}

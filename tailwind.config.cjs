@@ -7,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Nunito Sans', 'sans-serif'],
+        sans: ["Nunito Sans", 'sans-serif']
       },
       colors: {
         'mappin-blue': '#0081A1',
@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [],
 
-  //NOTE: Scopes tailwind to only override classes in the embed (root element id is 'mappin-embed')
+  //NOTE: Scopes tailwind to only add css in the embed (root element id is 'mappin-embed')
   important: '#mappin-embed',
 
   //NOTE: prevents tailwind from injecting global styles

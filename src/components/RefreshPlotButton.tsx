@@ -34,14 +34,14 @@ const RefreshPlotButton = (props: IProps) => {
   const disabled = markersInDictionary || fetchInProgress
 
   return (
-      <div className="h-[52px] mr-3">
+      <div className="h-[52px] !mr-3">
         <div className="group relative w-max">
           <button
             onClick={onClick}
             type="button"
             className=" 
             inline-flex items-center rounded-md border-transparent  
-            px-6 py-3 text-base font-medium text-white shadow-sm  
+            !px-6 !py-3 text-base font-medium text-white shadow-sm  
             bg-mappin-blue
             hover:opacity-80
             active:opacity-70
@@ -50,7 +50,7 @@ const RefreshPlotButton = (props: IProps) => {
           "
             disabled={disabled}
           >
-            <AiOutlineLineChart className='scale-150 mr-2 mb-[2px]' />
+            <AiOutlineLineChart className='scale-150 !mr-2 !mb-[2px]' />
             Plot
           </button>
           {markersInDictionary && <span
