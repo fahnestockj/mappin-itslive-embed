@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { geoJsonLookup } from "./geoJsonLookup"
-import { IMarker } from '../types'
+import { IMarker } from '../../types'
 
 describe('geoJsonLookup', () => {
 

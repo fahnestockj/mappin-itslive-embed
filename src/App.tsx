@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { findManyTimeseries } from "./utils/findManyTimeseries";
+import { findManyTimeseries } from "./utils/findManyTimeseries/findManyTimeseries";
 import PlotlyChart from "./components/PlotlyChart";
 import EmbedMap from "./components/EmbedMap/EmbedMap";
 import LocationMarker from "./components/LocationMarker/LocationMarker";

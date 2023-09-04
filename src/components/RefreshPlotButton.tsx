@@ -1,6 +1,6 @@
 import { AiOutlineLineChart } from "react-icons/ai";
 import { IMarker, ITimeseries, glaciersDict } from "../types";
-import { findManyTimeseries } from "../utils/findManyTimeseries";
+import { findManyTimeseries } from "../utils/findManyTimeseries/findManyTimeseries";
 
 type IProps = {
   fetchInProgress: boolean

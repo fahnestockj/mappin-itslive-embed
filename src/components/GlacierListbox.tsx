@@ -3,7 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
 import { IGlacier, IMarker, ITimeseries, glaciersDict } from '../types';
-import { findManyTimeseries } from '../utils/findManyTimeseries';
+import { findManyTimeseries } from '../utils/findManyTimeseries/findManyTimeseries';
 
 type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
