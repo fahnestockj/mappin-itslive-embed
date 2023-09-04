@@ -65,7 +65,7 @@ export async function findManyTimeseries(markerArr: Array<IMarker>): Promise<Arr
 
     /** 
      * NOTE: Mid date array is in days since 1970-01-01 (EPOCH) which the Date constructor cannot handle
-     * new Date(daysSinceEpochFloat * 86400000) -> converts to milliseconds since EPOCH which the Date constructor can handle
+     * new Date(daysSinceEpochFloat * 86_400_000) -> converts to milliseconds since EPOCH which the Date constructor can handle
      **/
     const midDateArr = await midDateZarr.get(null).then(res => {
       if (typeof res === 'number') {

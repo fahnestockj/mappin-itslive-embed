@@ -1,12 +1,15 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 
-// https://vitejs.dev/config/build-options.html#build-rollupoptions
-// https://rollupjs.org/configuration-options/#output-entryfilenames
+/**
+ * https://vitejs.dev/config/build-options.html#build-rollupoptions
+ * https://rollupjs.org/configuration-options/#output-entryfilenames
+*/
 
 export default defineConfig({
   plugins: [react()],
   build: {
+    outDir: '../static/mappin-build',
     rollupOptions: {
       output: {
         entryFileNames: 'mappin-build.js',

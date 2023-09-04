@@ -8,7 +8,7 @@ type IProps = {
 const ClearMarkersButton = (props: IProps) => {
   const { setMarkers, setTimeseriesArr } = props;
   return (
-    <div className="h-[52px] min-w-[220px]">
+    <div className="h-[52px] min-w-[175px]">
       <div className="group relative h-full w-full">
         <button
           type="button"
