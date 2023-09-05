@@ -8,7 +8,7 @@ type IProps = {
   numOfMarkers: number
 }
 
-let progressInterval: any;
+let progressInterval: NodeJS.Timer;
 
 const ProgressBarWithTimer = (props: IProps) => {
   const { disabled, setProgress, progress, numOfMarkers } = props

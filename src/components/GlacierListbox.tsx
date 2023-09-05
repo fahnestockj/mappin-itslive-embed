@@ -4,6 +4,7 @@ import { BiCheck } from 'react-icons/bi';
 import { BsChevronExpand } from 'react-icons/bs'
 import { IGlacier, IMarker, ITimeseries, glaciersDict } from '../types';
 import { findManyTimeseries } from '../utils/findManyTimeseries/findManyTimeseries';
+import { Map as IMap } from 'leaflet';
 
 type IProps = {
   setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>
@@ -11,7 +12,7 @@ type IProps = {
   setProgress: React.Dispatch<React.SetStateAction<number>>
   setFetchInProgress: React.Dispatch<React.SetStateAction<boolean>>
   markers: Array<IMarker>
-  mapRef: any
+  mapRef: IMap | null
   setVelMosaicChecked: React.Dispatch<React.SetStateAction<boolean>>
 }
 export function GlacierListbox(props: IProps) {
@@ -25,7 +26,7 @@ export function GlacierListbox(props: IProps) {
   }, [markers, selected])
 
   return (
-    <div className="z-50 w-[22rem] h-[52px]">
+    <div className="z-50 w-[22rem] h-[52px] max-w-[100%]">
       <Listbox value={selected} onChange={setSelected} >
         <div className="relative h-full">
           <Listbox.Button className="relative w-full h-full cursor-default rounded-lg bg-white py-[13px] !pl-3 !pr-10 text-left shadow-md sm:text-sm border-0">
@@ -62,7 +63,7 @@ export function GlacierListbox(props: IProps) {
                             setVelMosaicChecked(false)
                             setMarkers(glacier.markers)
                             setTimeseriesArr([])
-                            mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
+                            mapRef && mapRef.flyTo([glacier.center.lat, glacier.center.lon], glacier.zoomLevel)
 
                             setFetchInProgress(true)
                             const res = await findManyTimeseries(glacier.markers).catch(err => {

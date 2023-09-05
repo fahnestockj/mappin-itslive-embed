@@ -2,10 +2,11 @@ import { CRS } from "leaflet";
 import { LayersControl, MapContainer, TileLayer } from "react-leaflet";
 import './leaflet.css';
 import { useMemo } from "react";
+import { Map as IMap } from "leaflet";
 
 interface IProps {
   mapChildren?: React.ReactNode
-  setMap: React.Dispatch<React.SetStateAction<any>>
+  setMap: React.Dispatch<React.SetStateAction<IMap | null>>
   velMosaicChecked: boolean
 }
 
@@ -29,6 +30,7 @@ const EmbedMap = (props: IProps) => {
             minZoom={2}
             scrollWheelZoom={true}
             worldCopyJump={true}
+            //@ts-ignore
             ref={setMap}
           >
             <LayersControl >

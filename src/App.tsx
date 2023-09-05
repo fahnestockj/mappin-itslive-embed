@@ -9,10 +9,12 @@ import MapEventController from "./components/MapEventController";
 import { IMarker, ITimeseries, glaciersDict } from "./types";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
 import { GlacierListbox } from "./components/GlacierListbox";
+import SeeMoreButton from "./components/SeeMoreButton";
+import { Map as IMap } from "leaflet";
 
 const App = () => {
 
-  const [mapRef, setMapRef] = useState<any>(null);
+  const [mapRef, setMapRef] = useState<IMap | null>(null);
   const [markers, setMarkers] = useState<Array<IMarker>>(
     glaciersDict["Alaska/Yukon"][0].markers
   );
@@ -37,7 +39,7 @@ const App = () => {
   return (
     <div className="max-w-[1000px] h-[1000px] bg-[#222222] flex flex-col items-center">
       <div className="w-full h-full">
-        <div className="w-full h-[40%]">
+        <div className="w-full h-[44%]">
           <EmbedMap
             velMosaicChecked={velMosaicChecked}
             mapChildren={
@@ -62,19 +64,26 @@ const App = () => {
         </div>
         <div className="w-full flex md:flex-row items-center min-h-min !my-5 flex-col">
           <div className="flex flex-row md:justify-start w-1/2 justify-center">
-            <RefreshPlotButton
-              fetchInProgress={fetchInProgress}
-              setFetchInProgress={setFetchInProgress}
-              markers={markers}
-              setProgress={setProgress}
-              setTimeseriesArr={setTimeseriesArr}
-            />
-            <ClearMarkersButton
-              setMarkers={setMarkers}
-              setTimeseriesArr={setTimeseriesArr}
-            />
+            <div className="!mr-3">
+              <RefreshPlotButton
+                fetchInProgress={fetchInProgress}
+                setFetchInProgress={setFetchInProgress}
+                markers={markers}
+                setProgress={setProgress}
+                setTimeseriesArr={setTimeseriesArr}
+              />
+            </div>
+            <div className="!mr-3">
+              <ClearMarkersButton
+                setMarkers={setMarkers}
+                setTimeseriesArr={setTimeseriesArr}
+              />
+            </div>
           </div>
           <div className="flex flex-row md:justify-end w-1/2 justify-center md:!mt-0 !mt-3">
+            <div className="!mr-3">
+              <SeeMoreButton markers={markers} />
+            </div>
             <GlacierListbox
               setMarkers={setMarkers}
               mapRef={mapRef}
@@ -86,8 +95,11 @@ const App = () => {
             />
           </div>
         </div>
-        <div className="w-full h-[40%]">
+        <div className="w-full h-[44%]">
           <PlotlyChart timeseriesArr={timeseriesArr} />
+        </div>
+        <div className="text-sm text-right font-sans text-[#7C7C7C] !mt-1">
+          Demo widget created by <a className="text-[#00B8D4] no-underline hover:underline" target="_blank" href="https:www.linkedin.com/in/fahnestockj" rel="noreferrer">Jacob Fahnestock</a>
         </div>
       </div>
 

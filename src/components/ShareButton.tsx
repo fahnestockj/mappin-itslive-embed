@@ -1,9 +1,7 @@
 import React from "react"
 import { BiShare } from "react-icons/bi";
 
-type IProps = {
-}
-export const ShareButton = (props: IProps) => {
+export const ShareButton = () => {
   const [copied, setCopied] = React.useState<boolean>(false)
 
   const copyToClipboard = () => {

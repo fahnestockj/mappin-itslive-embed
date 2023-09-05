@@ -1,9 +1,10 @@
 import React from "react";
 import { BiTrash } from "react-icons/bi";
+import { IMarker, ITimeseries } from "../types";
 
 type IProps = {
-  setMarkers: React.Dispatch<React.SetStateAction<any[]>>;
-  setTimeseriesArr: React.Dispatch<React.SetStateAction<any[]>>;
+  setMarkers: React.Dispatch<React.SetStateAction<IMarker[]>>;
+  setTimeseriesArr: React.Dispatch<React.SetStateAction<ITimeseries[]>>;
 };
 const ClearMarkersButton = (props: IProps) => {
   const { setMarkers, setTimeseriesArr } = props;
