@@ -8,7 +8,7 @@ const SeeMoreButton = (props: IProps) => {
   const { markers } = props;
   const searchParams: string = markers.map(marker => `lat=${marker.latLon.lat}&lng=${marker.latLon.lon}&c=${marker.color}`).join('&')
   return (
-    <div className="h-[52px] min-w-[140px]">
+    <div className="h-[52px] min-w-[166px]">
       <a href={`https://mappin.itsliveiceflow.science/chart?${searchParams}`} target="_blank" rel="noreferrer">
         <div className="group relative h-full w-full">
           <button
@@ -20,7 +20,7 @@ const SeeMoreButton = (props: IProps) => {
           active:bg-gray-300"
           >
             <BiLinkExternal className="scale-150 !mr-2 !mb-[2px]" />
-            See More
+            Explore More
           </button>
         </div>
       </a>

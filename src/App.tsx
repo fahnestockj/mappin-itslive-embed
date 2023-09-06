@@ -9,7 +9,6 @@ import MapEventController from "./components/MapEventController";
 import { IMarker, ITimeseries, glaciersDict } from "./types";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
 import { GlacierListbox } from "./components/GlacierListbox";
-import SeeMoreButton from "./components/SeeMoreButton";
 import { Map as IMap } from "leaflet";
 
 const App = () => {
@@ -39,7 +38,7 @@ const App = () => {
   return (
     <div className="max-w-[1000px] h-[1000px] bg-[#222222] flex flex-col items-center">
       <div className="w-full h-full">
-        <div className="w-full h-[44%]">
+        <div className="w-full h-[41%] md:h-[44%]">
           <EmbedMap
             velMosaicChecked={velMosaicChecked}
             mapChildren={
@@ -81,9 +80,6 @@ const App = () => {
             </div>
           </div>
           <div className="flex flex-row md:justify-end w-1/2 justify-center md:!mt-0 !mt-3">
-            <div className="!mr-3">
-              <SeeMoreButton markers={markers} />
-            </div>
             <GlacierListbox
               setMarkers={setMarkers}
               mapRef={mapRef}
@@ -95,7 +91,7 @@ const App = () => {
             />
           </div>
         </div>
-        <div className="w-full h-[44%]">
+        <div className="w-full h-[41%] md:h-[44%]">
           <PlotlyChart timeseriesArr={timeseriesArr} />
         </div>
         <div className="text-sm text-right font-sans text-[#7C7C7C] !mt-1">
