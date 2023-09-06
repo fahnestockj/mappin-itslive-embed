@@ -4,7 +4,7 @@ import { IMarker } from "../types";
 type IProps = {
   markers: Array<IMarker>
 }
-const SeeMoreButton = (props: IProps) => {
+const ExploreMoreButton = (props: IProps) => {
   const { markers } = props;
   const searchParams: string = markers.map(marker => `lat=${marker.latLon.lat}&lng=${marker.latLon.lon}&c=${marker.color}`).join('&')
   return (
@@ -20,7 +20,7 @@ const SeeMoreButton = (props: IProps) => {
           active:bg-gray-300"
           >
             <BiLinkExternal className="scale-150 !mr-2 !mb-[2px]" />
-            Explore More
+            Explore More!
           </button>
         </div>
       </a>
@@ -28,4 +28,4 @@ const SeeMoreButton = (props: IProps) => {
   );
 };
 
-export default SeeMoreButton;
+export default ExploreMoreButton;

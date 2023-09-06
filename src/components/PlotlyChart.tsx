@@ -28,7 +28,7 @@ const PlotlyChart = (props: IProps) => {
           })
         }
         layout={{
-          autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr',
+          autosize: true, title: 'ITS_LIVE Ice Flow Speed m/yr', showlegend: false, 
           xaxis: { title: 'date', type: 'date' }, yaxis: { type: '-', title: 'speed (m/yr)' }
         }}
         config={{ responsive:true, doubleClick: 'autosize', displaylogo: false, showTips: false, modeBarButtonsToRemove: ['select2d', 'lasso2d', 'resetScale2d'] }}

@@ -10,6 +10,7 @@ import { IMarker, ITimeseries, glaciersDict } from "./types";
 import ProgressBarWithTimer from "./components/ProgressBarWithTimer";
 import { GlacierListbox } from "./components/GlacierListbox";
 import { Map as IMap } from "leaflet";
+import ExploreMoreButton from "./components/ExploreMoreButton";
 
 const App = () => {
 
@@ -38,7 +39,7 @@ const App = () => {
   return (
     <div className="max-w-[1000px] h-[1000px] bg-[#222222] flex flex-col items-center">
       <div className="w-full h-full">
-        <div className="w-full h-[41%] md:h-[44%]">
+        <div className="w-full h-[39%] md:h-[42%]">
           <EmbedMap
             velMosaicChecked={velMosaicChecked}
             mapChildren={
@@ -91,11 +92,16 @@ const App = () => {
             />
           </div>
         </div>
-        <div className="w-full h-[41%] md:h-[44%]">
+        <div className="w-full h-[39%] md:h-[42%]">
           <PlotlyChart timeseriesArr={timeseriesArr} />
         </div>
-        <div className="text-sm text-right font-sans text-[#7C7C7C] !mt-1">
-          Demo widget created by <a className="text-[#00B8D4] no-underline hover:underline" target="_blank" href="https:www.linkedin.com/in/fahnestockj" rel="noreferrer">Jacob Fahnestock</a>
+        <div className="flex justify-between ">
+          <div className="!mt-2">
+            <ExploreMoreButton markers={markers} />
+          </div>
+          <div className="text-sm text-right font-sans text-[#7C7C7C] !mt-1">
+            Demo widget created by <a className="text-[#00B8D4] no-underline hover:underline" target="_blank" href="https:www.linkedin.com/in/fahnestockj" rel="noreferrer">Jacob Fahnestock</a>
+          </div>
         </div>
       </div>
 
