@@ -9,7 +9,7 @@
   font-style: normal;
   font-weight: normal;
   src: url("/itslive-web/mappin-build/fonts/NunitoSans-Regular.ttf") format("woff2");
-  src: url("/fonts/NunitoSans-Regular.ttf") format("woff2");
+  /* src: url("/fonts/NunitoSans-Regular.ttf") format("woff2"); */
 }
 #mappin-embed img,  #mappin-embed li, #mappin-embed ul {
     border-radius: 0px;
