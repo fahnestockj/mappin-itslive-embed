@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build-prod": "tsc && vite build --outDir ../static/mappin-build --base /mappin-build/",
+    "build-dev": "tsc && vite build --outDir ../static/mappin-build --base /itslive-web/mappin-build/",
     "typecheck": "tsc",
     "tc": "tsc && eslint --ext .js,.jsx,.ts,.tsx .",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
