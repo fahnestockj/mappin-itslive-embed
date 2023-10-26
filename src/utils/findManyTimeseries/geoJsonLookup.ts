@@ -27,7 +27,7 @@ export function geoJsonLookup(markers: Array<IMarker>): Array<{
       throw new Error("No features found or more than one feature found");
     }
     const zarrUrl = features[0].properties.zarr_url;
-    const projection = features[0].properties.data_epsg;
+    const projection = `EPSG:${features[0].properties.epsg}`
 
     //NOTE: EPSG:4326 is the projection of the lat lon coordinates
     // lat: 70, lon: -50 => [-200000, -2200000] in the locale projection EPSG:3413
