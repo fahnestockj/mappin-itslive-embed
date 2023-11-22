@@ -100,7 +100,7 @@ const App = () => {
             <ExploreMoreButton markers={markers} />
           </div>
           <div className="text-sm text-right font-sans text-[#7C7C7C] !mt-1">
-            Demo widget created by <a className="text-[#00B8D4] no-underline hover:underline" target="_blank" href="https:www.linkedin.com/in/fahnestockj" rel="noreferrer">Jacob Fahnestock</a>
+            Demo widget created by <a className="text-[#00B8D4] no-underline hover:underline" target="_blank" href="https://www.linkedin.com/in/fahnestockj" rel="noreferrer">Jacob Fahnestock</a>
           </div>
         </div>
       </div>
