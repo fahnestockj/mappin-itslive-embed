@@ -2,14 +2,21 @@ import React from "react";
 import { BiLinkExternal } from "react-icons/bi";
 import { IMarker } from "../types";
 type IProps = {
-  markers: Array<IMarker>
-}
+  markers: Array<IMarker>;
+};
 const ExploreMoreButton = (props: IProps) => {
   const { markers } = props;
-  const searchParams: string = markers.map(marker => `lat=${marker.latLon.lat}&lng=${marker.latLon.lon}`).join('&')
+  const searchParams: string = markers
+    .map((marker) => `lat=${marker.latLon.lat}&lon=${marker.latLon.lon}`)
+    .join("&")
+    .concat("&z=9");
   return (
     <div className="h-[52px] min-w-[166px]">
-      <a href={`https://its-live.jpl.nasa.gov/app/index.html?${searchParams}`} target="_blank" rel="noreferrer">
+      <a
+        href={`https://its-live.jpl.nasa.gov/app/index.html?${searchParams}`}
+        target="_blank"
+        rel="noreferrer"
+      >
         <div className="group relative h-full w-full">
           <button
             type="button"
@@ -24,7 +31,7 @@ const ExploreMoreButton = (props: IProps) => {
           </button>
         </div>
       </a>
-    </div >
+    </div>
   );
 };
 
