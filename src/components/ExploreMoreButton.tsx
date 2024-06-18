@@ -9,7 +9,7 @@ const ExploreMoreButton = (props: IProps) => {
   const searchParams: string = markers.map(marker => `lat=${marker.latLon.lat}&lng=${marker.latLon.lon}`).join('&')
   return (
     <div className="h-[52px] min-w-[166px]">
-      <a href={`https://its-live.jpl.nasa.gov/app?${searchParams}`} target="_blank" rel="noreferrer">
+      <a href={`https://its-live.jpl.nasa.gov/app/index.html?${searchParams}`} target="_blank" rel="noreferrer">
         <div className="group relative h-full w-full">
           <button
             type="button"
