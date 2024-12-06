@@ -1,6 +1,6 @@
 //@ts-ignore
 import GeoJsonGeometriesLookup from "geojson-geometries-lookup";
-import geoJsonFile from "../../geoJson/catalog_v02.json";
+import geoJsonFile from "../../geoJson/stripped_catalog.json";
 import { checkIfCoordinateIsWithinBounds } from "./checkIfCoordinateIsWithinBounds";
 import { appProj4 } from "./proj4Projections";
 import { IMarker } from "../../types";
