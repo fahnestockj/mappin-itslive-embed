@@ -28,12 +28,12 @@ const EmbedMap = (props: IProps) => {
             zoom={zoom}
             maxZoom={15}
             minZoom={2}
-            scrollWheelZoom={true}
+            scrollWheelZoom={false}
             worldCopyJump={true}
             //@ts-ignore
             ref={setMap}
           >
-            <LayersControl >
+            <LayersControl>
               <TileLayer
                 className='cursor-crosshair'
                 attribution='Imagery provided by ESRI'

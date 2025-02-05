@@ -1,17 +1,19 @@
 import createPlotlyComponent from 'react-plotly.js/factory'
 import Plotly from 'plotly.js-gl2d-dist-min'
 import { ITimeseries, colorHexDict } from '../types';
+import clsx from 'clsx';
 
 const Plot = createPlotlyComponent(Plotly)
 
 type IProps = {
   timeseriesArr: Array<ITimeseries>
+  isLoading: boolean
 }
 
 const PlotlyChart = (props: IProps) => {
-  const { timeseriesArr } = props
+  const { timeseriesArr, isLoading } = props
   return (
-    <div className='w-full h-full'>
+    <div className={clsx('w-full h-full', isLoading && 'animate-pulse')}>
       <Plot
         data={
           timeseriesArr.map((timeseries: ITimeseries) => {
