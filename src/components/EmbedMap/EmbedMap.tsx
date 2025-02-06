@@ -43,7 +43,7 @@ const EmbedMap = (props: IProps) => {
               />
               <LayersControl.Overlay checked={velMosaicChecked} name='Velocity Map'>
                 <TileLayer
-                  className='cursor-crosshair'
+                  className='cursor-crosshair !opacity-50'
                   url="https://glacierflow.nyc3.digitaloceanspaces.com/webmaps/vel_map/{z}/{x}/{y}.png"
                   maxNativeZoom={15}
                   tileSize={256}
